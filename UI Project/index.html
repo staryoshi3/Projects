@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Videogame Recommendation</title>
+    <link rel="stylesheet" href="js/jquery-ui.min.css">
+    <script src="js/external/jquery/jquery.js"></script>
+    <script src="js/jquery-ui.js"></script>
+</head>
+<body>
+<h1>Videogame Recommendation Questionaire</h1>
+<button data-jqui-instruction>Instructions</button>
+<div>
+    <br>
+    <button onclick="showDiv1()">Show Question 1</button>
+    <h3>Question 1</h3>
+    <div id="question1" style="display:none;">
+        <form>
+            What is your favorite genre of videogames?:<br>
+            <input id="form1" type="text" name="genre">
+        </form><br>
+        <button data-jqui-clear1>Clear</button>
+        <br><br>
+        <button onclick="showDiv2()">Show Question 2</button>
+    </div>
+    <h3>Question 2</h3>
+    <div id="question2" style="display:none;">
+        <form>
+            What is your favorite console to play on?:<br>
+            <input type="text" name="console">
+        </form><br>
+        <button data-jqui-clear2>Clear</button>
+        <br><br>
+        <button onclick="showDiv3()">Show Question 3</button>
+    </div>
+    <h3>Question 3</h3>
+    <div id="question3" style="display:none">
+        <form>
+            Who is your favorite videogame character?:<br>
+            <input type="radio" name="character1" value="Mario">Mario<br>
+            <input type="radio" name="character2" value="Luigi">Luigi<br>
+        </form><br>
+        <button data-jqui-clear3>Clear</button>
+        <button data-jqui-submit>Submit</button>
+    </div>
+
+    <div data-jqui-instruction title="Instructions">
+        <p>Answer the questions to see what videogame we most recommend you!</p>
+    </div>
+
+    <div data-jqui-result title="Results">
+        <p>We recommend you play Super Smash Bros.</p>
+    </div>
+</div>
+<script>
+    function showDiv1() {
+        document.getElementById('question1').style.display = "block";
+    }
+    function showDiv2() {
+        document.getElementById('question2').style.display = "block";
+    }
+    function showDiv3() {
+        document.getElementById('question3').style.display = "block";
+    }
+    $('div[data-jqui-instruction]').dialog(
+            {modal: true}
+    );
+    $('button[data-jqui-instruction]').click(function () {
+        $('div[data-jqui-instruction]').dialog('open');
+        return false;
+    });
+    $('button[data-jqui-clear1]').click(function () {
+        $('form')[0].reset();
+    });
+    $('button[data-jqui-clear2]').click(function () {
+        $('form')[1].reset();
+    });
+    $('button[data-jqui-clear3]').click(function () {
+        $('input[name=character1]').attr('checked',false);
+        $('input[name=character2]').attr('checked',false);
+    });
+    $('button[data-jqui-submit]').click(function() {
+        $('div[data-jqui-result]').dialog('open');
+        return false;
+    });
+    $('div[data-jqui-result]').dialog(
+            {modal: true,
+                autoOpen: false}
+    );
+</script>
+</body>
+</html>

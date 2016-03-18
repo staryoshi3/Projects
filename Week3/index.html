@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery UI Intro</title>
+    <link href="js/jquery-ui.css" rel="stylesheet">
+    <script src="js/external/jquery/jquery.js"></script>
+    <script src="js/jquery-ui.js"></script>
+</head>
+<body>
+<h1>jQuery UI Intro</h1>
+<button data-jqui-button>Help</button>
+<div id="accordion">
+    <h3>COM 271</h3>
+    <div>Web Design</div>
+    <h3>COM 372</h3>
+    <div>Dynamic web applications</div>
+    <h3>CSC 301</h3>
+    <div>Fundamentals of programming languages</div>
+    <div data-jqui-dialog title="Help">
+        <p>To see information about the course, just click its course number!</p>
+    </div>
+</div>
+<script>
+    $(function () {
+        $('#accordion').accordion();
+        $('div[data-jqui-dialog]').dialog({autoOpen:false});
+        $('button[data-jqui-button]').click(function() {
+            $('div[data-jqui-dialog]').dialog('open');
+            return false;
+        });
+    });
+</script>
+</body>
+</html>

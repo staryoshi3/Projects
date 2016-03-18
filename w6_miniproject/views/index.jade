@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  h1= title
+  div
+    input(name='task', placeholder='Enter a task')
+    button Submit
+    p(id="tasklog")
+block scripts
+  script(src='/javascripts/tasklist.js')
